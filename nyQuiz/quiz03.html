@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BALN Quiz</title>
+<style type="text/css"> 
+	/*문제 가운데정렬*/
+	body{ 	
+		padding-top: 50px;
+		text-align: center; 
+		display: block; 
+		margin: 0 auto; 
+	    font-size: 16px; 
+	    color: #216282; 
+	}
+	/*팝업내용*/
+	p{ 
+		font-family: 'Oswald', sans-serif; 
+	    font-size: 30px; 
+	    color: #216182; 
+	} 
+
+    #next { 
+        width: 127px; height: 48px; 
+        text-align: center; 
+        border: none; 
+        margin-top: 20px; 
+        cursor: pointer; 
+    } 
+    #next:hover{ 
+        color: #fff; 
+        background-color: #216282; 
+        opacity: 0.9; 
+    }
+    
+	#end { 
+        width: 127px; height: 48px; 
+        text-align: center; 
+        border: none; 
+        margin-top: 20px; 
+        cursor: pointer; 
+    } 
+    #end:hover{ 
+        color: #fff; 
+        background-color: #216282; 
+        opacity: 0.9; 
+    }
+
+	/*버튼 기능*/
+	.modal { 
+		position: fixed; 
+		left: 0; 
+		top: 0; 
+		width: 100%; 
+		height: 100%; 
+		background-color: rgba(0, 0, 0, 0.5); 
+		opacity: 0; 
+		visibility: hidden; 
+		transform: scale(1.1); 
+		transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+	 }
+	.modal2 { 
+		position: fixed; 
+		left: 0; 
+		top: 0; 
+		width: 100%; 
+		height: 100%; 
+		background-color: rgba(0, 0, 0, 0.5); 
+		opacity: 0; 
+		visibility: hidden; 
+		transform: scale(1.1); 
+		transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+	} 
+	.modal3 { 
+		position: fixed; 
+		left: 0; 
+		top: 0; 
+		width: 100%; 
+		height: 100%; 
+		background-color: rgba(0, 0, 0, 0.5); 
+		opacity: 0; 
+		visibility: hidden; 
+		transform: scale(1.1); 
+		transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+	 }
+	.modal4 { 
+		position: fixed; 
+		left: 0; 
+		top: 0; 
+		width: 100%; 
+		height: 100%; 
+		background-color: rgba(0, 0, 0, 0.5); 
+		opacity: 0; 
+		visibility: hidden; 
+		transform: scale(1.1); 
+		transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+	 } 
+	.modal5 { 
+		position: fixed; 
+		left: 0; 
+		top: 0; 
+		width: 100%; 
+		height: 100%; 
+		background-color: rgba(0, 0, 0, 0.5); 
+		opacity: 0; 
+		visibility: hidden; 
+		transform: scale(1.1); 
+		transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+	 } 	 
+	 
+	/*팝업1*/
+	.modal-content { 
+		position: absolute; 
+		top: 50%; 
+		left: 50%; 
+		transform: translate(-50%, -50%); 
+		background-color: white; 
+		padding: 1rem 1.5rem; 
+		width: 300px; 
+		height: 200px; 
+		border-radius: 0.5rem; 
+	} 
+	.close-button { 
+		float: right; 
+		width: 1.5rem; 
+		line-height: 1.5rem; 
+		text-align: center; 
+		cursor: pointer; 
+		border-radius: 0.25rem; 
+		background-color: lightgray; 
+	} 
+	.close-button:hover { 
+		background-color: darkgray; 
+	}
+	 
+	.show-modal { 
+		opacity: 1; 
+		visibility: visible; 
+		transform: scale(1.0); 
+		transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+	}
+	
+	/*팝업2*/
+	.modal-content2 { 
+		position: absolute; 
+		top: 50%; 
+		left: 50%; 
+		transform: translate(-50%, -50%); 
+		background-color: white; 
+		padding: 1rem 1.5rem; 
+		width: 300px; 
+		height: 200px; 
+		border-radius: 0.5rem; 
+	} 
+	.close-button2 { 
+		float: right; 
+		width: 1.5rem; 
+		line-height: 1.5rem; 
+		text-align: center; 
+		cursor: pointer; 
+		border-radius: 0.25rem; 
+		background-color: lightgray; 
+	} 
+	 .close-button2:hover { 
+		background-color: darkgray; 
+	 } 
+	 .show-modal2 { 
+		opacity: 1; 
+		visibility: visible; 
+		transform: scale(1.0); 
+		transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+	 }
+	 
+	/*팝업4*/
+	.modal-content4 { 
+		position: absolute; 
+		top: 50%; 
+		left: 50%; 
+		transform: translate(-50%, -50%); 
+		background-color: white; 
+		padding: 1rem 1.5rem; 
+		width: 300px; 
+		height: 200px; 
+		border-radius: 0.5rem; 
+	} 
+	.close-button4 { 
+		float: right; 
+		width: 1.5rem; 
+		line-height: 1.5rem; 
+		text-align: center; 
+		cursor: pointer; 
+		border-radius: 0.25rem; 
+		background-color: lightgray; 
+	} 
+	 .close-button4:hover { 
+		background-color: darkgray; 
+	 } 
+	 .show-modal4 { 
+		opacity: 1; 
+		visibility: visible; 
+		transform: scale(1.0); 
+		transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+	 }
+	 
+	 
+	 /*팝업5*/
+	.modal-content5 { 
+		position: absolute; 
+		top: 50%; 
+		left: 50%; 
+		transform: translate(-50%, -50%); 
+		background-color: white; 
+		padding: 1rem 1.5rem; 
+		width: 300px; 
+		height: 200px; 
+		border-radius: 0.5rem; 
+	} 
+	.close-button5 { 
+		float: right; 
+		width: 1.5rem; 
+		line-height: 1.5rem; 
+		text-align: center; 
+		cursor: pointer; 
+		border-radius: 0.25rem; 
+		background-color: lightgray; 
+	} 
+	 .close-button5:hover { 
+		background-color: darkgray; 
+	 } 
+	 .show-modal5 { 
+		opacity: 1; 
+		visibility: visible; 
+		transform: scale(1.0); 
+		transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+	 }
+	 
+	/*정답팝업*/
+	.modal-content3 { 
+		position: absolute; 
+		top: 50%; 
+		left: 50%; 
+		transform: translate(-50%, -50%); 
+		background-color: white; 
+		padding: 1rem 1.5rem; 
+		width: 300px; 
+		height: 200px; 
+		border-radius: 0.5rem; 
+	} 
+	.close-button3 { 
+		float: right; 
+		width: 1.5rem; 
+		line-height: 1.5rem; 
+		text-align: center; 
+		cursor: pointer; 
+		border-radius: 0.25rem; 
+		background-color: lightgray; 
+	} 
+	.close-button3:hover { 
+		background-color: darkgray; 
+	} 
+	 .show-modal3 { 
+		opacity: 1; 
+		visibility: visible; 
+		transform: scale(1.0); 
+		transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+	 }
+</style>
+</head>
+<body>
+
+	<div>
+	<h2>문제 3. 다음 중 문제와 답이 정확하게 명시된 것을 고르시오.<br></h2>
+	</div>
+   
+	<!-- 버튼1 --> 
+	<button class="trigger1">이토 히로부미를 사살한 위인은 안중근 의사이다. <b>X</b></button> <br>
+	
+	<!-- 팝업1 --> 
+	 <div class="modal"> 
+	     <div class="modal-content"> 
+	         <span class="close-button">&times;</span> 
+	         <p class="title"><b>한국사를 모르시나요? 큰일이네요</b></p> 
+	     </div> 
+	 </div>
+	
+	
+	<!-- 정답버튼 --> 
+	<button class="trigger3">일의 자리에서 반올림하여 1700이 되는 수는 모두 10개이다. <b>O</b></button> <br>
+	
+	<!-- 팝업3 --> 
+	 <div class="modal3"> 
+	     <div class="modal-content3"> 
+	         <span class="close-button3">&times;</span> 
+	         <p class="title3"><b>정답입니다!</b></p>
+	         <form>
+	         	<a href="이프랜드 링크넣기"><input type="button" id="end" value="입장하기"></a> 
+	         </form>
+	     </div> 
+	 </div>
+
+
+	<!-- 버튼2 --> 
+	<button class="trigger2">자석은 2000년전에 살았던 마그네스라는 양치기가 자석을 처음 발견했다 <b>X</b></button> <br>
+	
+	<!-- 팝업2 --> 
+	 <div class="modal2"> 
+	     <div class="modal-content2"> 
+	         <span class="close-button2">&times;</span> 
+	         <p class="title2"><b>마그네...틱이라는 <br>말이 왜 생겼을까요?</b></p> 
+	     </div> 
+	 </div>
+	
+	
+	<!-- 버튼4 --> 
+	<button class="trigger4">전화는 프랑스의 니에프스에 의해 발명되었다. <b>O</b><br></button> <br>
+	
+	<!-- 팝업4 --> 
+	 <div class="modal4"> 
+	     <div class="modal-content4"> 
+	         <span class="close-button4">&times;</span> 
+	         <p class="title4"><b>전화가 영어로 뭘까요?</b></p> 
+	     </div> 
+	 </div>
+	 
+	 
+	 <!-- 버튼5 --> 
+	<button class="trigger5">어떠한 생각이나 안을 내놓는 것을 제안 이라고한다. <b>X</b><br></button> <br>
+	
+	<!-- 팝업5 --> 
+	 <div class="modal5"> 
+	     <div class="modal-content5"> 
+	         <span class="close-button5">&times;</span> 
+	         <p class="title5"><b>그럼 제안은 무엇인가요?</b></p> 
+	     </div> 
+	 </div>
+	 
+
+	<!-- 스크립트기능 -->
+	<script type="text/javascript"> 
+		var modal = document.querySelector(".modal");
+		var modal2 = document.querySelector(".modal2");
+		var modal3 = document.querySelector(".modal3");
+		var modal4 = document.querySelector(".modal4");
+		var modal5 = document.querySelector(".modal5");
+		var trigger1 = document.querySelector(".trigger1");
+		var trigger2 = document.querySelector(".trigger2"); 
+		var trigger3 = document.querySelector(".trigger3");
+		var trigger4 = document.querySelector(".trigger4"); 
+		var trigger5 = document.querySelector(".trigger5"); 
+		var closeButton = document.querySelector(".close-button");
+		var closeButton2 = document.querySelector(".close-button2");
+		var closeButton3 = document.querySelector(".close-button3");
+		var closeButton4 = document.querySelector(".close-button4");
+		var closeButton5 = document.querySelector(".close-button5");
+		var nextButton = document.querySelector("#next");
+		var endButton = document.querySelector("#end");
+	
+		//버튼클릭
+		function toggleModal() { 
+			modal.classList.toggle("show-modal"); 
+		}
+		function toggleModal2() { 
+			modal2.classList.toggle("show-modal2"); 
+		}
+		function toggleModal3() { 
+			modal3.classList.toggle("show-modal3"); 
+		}
+		function toggleModal4() { 
+			modal4.classList.toggle("show-modal4"); 
+		}
+		function toggleModal5() { 
+			modal5.classList.toggle("show-modal5"); 
+		}
+	
+		trigger1.addEventListener("click", toggleModal);
+		trigger2.addEventListener("click", toggleModal2);
+		trigger3.addEventListener("click", toggleModal3);
+		trigger4.addEventListener("click", toggleModal4);
+		trigger5.addEventListener("click", toggleModal5);
+		closeButton.addEventListener("click", toggleModal);
+		closeButton2.addEventListener("click", toggleModal2);
+		closeButton3.addEventListener("click", toggleModal3);
+		closeButton4.addEventListener("click", toggleModal4);
+		closeButton5.addEventListener("click", toggleModal5);
+	</script>
+</body>
+</html>

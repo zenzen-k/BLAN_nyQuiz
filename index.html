@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLAN Quiz</title>
+
+<!-- Style-->
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/index.css">
+<link rel="stylesheet" href="assets/css/mediaquery.css">
+<link rel="stylesheet" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/lg-transitions.css">
+<link rel="stylesheet" href="assets/css/lightgallery.css">
+
+<!-- favicon-->
+<link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="assets/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Webfont-->
+<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css">
+<link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/1606da8e-c1e8-40b4-803d-be21893de9ee.css" />
+
+<!-- Script-->
+<script src="assets/js/html5shiv.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="http://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script>
+<script src="assets/js/jquery.fittext.js"></script>
+<script src="assets/js/skrollr.min.js"></script>
+<script src="assets/js/lightgallery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+<script src="assets/js/imagesloaded.pkgd.min.js"></script>
+
+<script>
+	$(function() {
+		imagesProgress()
+	});
+
+	/* 로딩 스크립트 함수 */
+	function imagesProgress() {
+		var $container = $('#progress'),
+		$progressBar = $container.find('.progress-bar'),
+		$progressText = $container.find('.progress-text'),
+		imgLoad = imagesLoaded('html'),
+		imgTotal = imgLoad.images.length,
+		imgLoaded = 0,
+		current = 0,
+		progressTimer = setInterval(updateProgress, 1000 / 60);
+
+		imgLoad.on('progress', function() {
+			imgLoaded++;
+		});
+
+		function updateProgress() {
+			var target = (imgLoaded / imgTotal) * 100;
+			current += (target - current) * 0.1;
+
+			$progressBar.css({
+				width : current + '%'
+			});
+			$progressText.text(Math.floor(current) + '%');
+
+			if (current >= 100) {
+				clearInterval(progressTimer);
+				$container.addClass('progress-complete');
+				$progressBar.add($progressText).delay(500).animate({
+					opacity : 0
+				}, 250, function() {
+					$container.animate({
+						top : '-100%'
+					}, 1000, 'easeInOutQuint');
+				});
+			}
+			if (current > 99.9) {
+				current = 100;
+			}
+		}
+	}
+</script>
+
+</head>
+<body>
+	<div class="progress" id="progress">
+		<div id="loading">
+			<div class="loading-text">
+				<span class="loading-text-words">L</span>
+				<span class="loading-text-words">O</span>
+				<span class="loading-text-words">A</span>
+				<span class="loading-text-words">D</span>
+				<span class="loading-text-words">I</span>
+				<span class="loading-text-words">N</span>
+				<span class="loading-text-words">G</span>
+			</div>
+		</div>
+		<span class="progress-bar"></span>
+		<span class="progress-text">0%</span>
+	</div>
+
+	<div class="layout">
+		<div class="main-contents">
+			<!-- contents-->
+			<div id="contents">
+				<a href="nyQuiz/quiz01.html" ><img src="assets/img/blanlogo.png" alt="이미지"/></a>
+			</div>
+			<!-- //contents-->
+			
+			<div style="display: none;" id="footer">
+				<div class="container clearfix">
+					<div class="copyright clearfix">
+						<p>Copyright © 2022. All Rights Reserved</p>
+						<img src="assets/favicon/logo_favicon.png" alt="BLANCREW">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

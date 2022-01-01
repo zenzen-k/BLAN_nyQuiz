@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="BLAN_nyQuiz">
+        <wb-resource deploy-path="/" source-path="/assets"/>
+        <property name="context-root" value="BLAN_nyQuiz"/>
+    </wb-module>
+</project-modules>
